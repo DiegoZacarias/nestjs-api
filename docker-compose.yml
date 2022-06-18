@@ -1,0 +1,18 @@
+version: '3'
+services:
+  #powerbi Service
+  db_exporter:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '54323:5432'
+    volumes:
+      - db_powerbi_export:/var/lib/postgresql/data
+#Volumes
+volumes:
+  db_powerbi_export:
+    driver: local
